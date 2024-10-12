@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maritime Fuel Emissions Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splash-screen">
+    <div class="splash-content">
+        <h1 class="splash-title">Welcome to the Maritime Fuel Emissions Simulation</h1>
+        <div class="loader"></div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<h1>Maritime Fuel Emissions Simulation</h1>
+
+<div class="container">
+
+    <div class="input-section">
+        <h2>Simulation Parameters</h2>
+
+        <label for="distance">Voyage Distance (nautical miles): <span id="distance-value">1000</span></label>
+        <input type="range" id="distance" min="100" max="10000" step="100" value="1000">
+
+        <label for="numSimulations">Number of Simulations: <span id="numSimulations-value">10000</span></label>
+        <input type="range" id="numSimulations" min="1000" max="50000" step="1000" value="10000">
+
+        <label for="consumptionVariability">Fuel Consumption Variability (%): <span id="consumptionVariability-value">5</span>%</label>
+        <input type="range" id="consumptionVariability" min="0" max="20" step="1" value="5">
+
+        <label for="emissionVariability">Emission Factor Variability (%): <span id="emissionVariability-value">10</span>%</label>
+        <input type="range" id="emissionVariability" min="0" max="30" step="1" value="10">
+
+        <h2>Select Fuels to Compare</h2>
+        <div class="fuel-options">
+            <input type="checkbox" class="fuel-checkbox" id="diesel" value="Diesel" checked>
+            <label for="diesel">Diesel</label>
+
+            <input type="checkbox" class="fuel-checkbox" id="lng" value="LNG" checked>
+            <label for="lng">LNG</label>
+
+            <input type="checkbox" class="fuel-checkbox" id="hydrogen" value="Hydrogen" checked>
+            <label for="hydrogen">Hydrogen</label>
+
+            <input type="checkbox" class="fuel-checkbox" id="methanol" value="Methanol" checked>
+            <label for="methanol">Methanol</label>
+
+            <input type="checkbox" class="fuel-checkbox" id="ammonia" value="Ammonia" checked>
+            <label for="ammonia">Ammonia</label>
+        </div>
+
+        <button id="simulate-button">Run Simulation</button>
+    </div>
+
+    <div class="output-section">
+        <div id="co2-plot"></div>
+        <div id="nox-plot"></div>
+        <div id="results"></div>
+    </div>
+
+</div>
+
+<!-- Author Section -->
+<div class="author-section">
+    <p>Автор проекту:</p>
+    <h2>Магістр гр. 4601 Сахаров А.А.</h2>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Maritime Emissions Simulation</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
