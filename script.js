@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000); // The splash screen will be visible for 2 seconds
 });
 
+// Function to detect mobile devices
+function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+}
+
 function runSimulation() {
     // Get user inputs
     const distance = parseFloat(document.getElementById('distance').value);
@@ -85,27 +90,6 @@ function runSimulation() {
     displayResults(selectedFuels, baselineFuel, emissionReductions_CO2);
 }
 
-// Helper functions
-function randomNormal(n, mean, stdDev) {
-    return Array.from({ length: n }, () => {
-        let u = 0, v = 0;
-        while(u === 0) u = Math.random(); // Convert [0,1) to (0,1)
-        while(v === 0) v = Math.random();
-        return mean + stdDev * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-    });
-}
-
-function mean(arr) {
-    return arr.reduce((a, b) => a + b, 0) / arr.length;
-}
-
-function confidenceInterval(data) {
-    data.sort((a, b) => a - b);
-    const lowerIndex = Math.floor(data.length * 0.025);
-    const upperIndex = Math.floor(data.length * 0.975);
-    return [data[lowerIndex], data[upperIndex]];
-}
-
 function plotEmissions(containerId, title, fuels, means, confIntervals, colors) {
     const data = fuels.map((fuel, i) => {
         return {
@@ -162,7 +146,16 @@ function plotEmissions(containerId, title, fuels, means, confIntervals, colors) 
         bargap: 0.5,
     };
 
-    const config = { responsive: true };
+    // Detect if the user is on a mobile device
+    const isMobile = isMobileDevice();
+
+    // Adjust Plotly config options based on device
+    const config = {
+        responsive: true,
+        scrollZoom: !isMobile,        // Disable scroll zoom on mobile devices
+        displayModeBar: !isMobile,    // Hide mode bar on mobile devices
+        doubleClick: false,           // Disable double-tap zoom on mobile
+    };
 
     Plotly.newPlot(containerId, data, layout, config).then(() => {
         Plotly.animate(containerId, {
@@ -191,4 +184,25 @@ function displayResults(fuels, baselineFuel, reductions) {
         }
     });
     resultsDiv.appendChild(ul);
+}
+
+// Helper functions
+function randomNormal(n, mean, stdDev) {
+    return Array.from({ length: n }, () => {
+        let u = 0, v = 0;
+        while(u === 0) u = Math.random(); // Convert [0,1) to (0,1)
+        while(v === 0) v = Math.random();
+        return mean + stdDev * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    });
+}
+
+function mean(arr) {
+    return arr.reduce((a, b) => a + b, 0) / arr.length;
+}
+
+function confidenceInterval(data) {
+    data.sort((a, b) => a - b);
+    const lowerIndex = Math.floor(data.length * 0.025);
+    const upperIndex = Math.floor(data.length * 0.975);
+    return [data[lowerIndex], data[upperIndex]];
 }
