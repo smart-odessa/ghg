@@ -235,7 +235,7 @@ body {
     z-index: 1;
 }
 
-.author-section::before {
+/*.author-section::before {
     content: "";
     position: absolute;
     top: -50px;
@@ -246,7 +246,7 @@ body {
     background: #007aff;
     border-radius: 50%;
     z-index: -1;
-}
+} */
 
 .author-section p {
     margin: 0;
