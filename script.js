@@ -60,11 +60,11 @@ function isMobileDevice() {
 function runSimulation() {
     // Get user inputs
     const distance = parseFloat(document.getElementById('distance').value);
-    const numSimulations = parseInt(document.getElementById('numSimulations').').value);
+    const numSimulations = parseInt(document.getElementById('numSimulations').value);
     const consumptionVariability = parseFloat(document.getElementById('consumptionVariability').value) / 100;
-    const emissionVariability = parseFloat(document.getElementById('emissionVariability').').value) / 100;
+    const emissionVariability = parseFloat(document.getElementById('emissionVariability').value) / 100;
 
-    const selectedFuels = Array.from(document.querySelectorAll('.fuel-checkbox:checked')).')).map(cb => cb.value);
+    const selectedFuels = Array.from(document.querySelectorAll('.fuel-checkbox:checked')).map(cb => cb.value);
 
     // Check if at least one fuel is selected
     if (selectedFuels.length === 0) {
@@ -92,18 +92,18 @@ function runSimulation() {
         const consumptionSamples = randomNormal(numSimulations, data.consumptionRate, consumptionVariability * data.consumptionRate);
 
         // Generate random samples for emission factors
-        const emissionSamples_CO2 = randomNormal(numSimulations, data.em_CO2, emissionVariability * data.em_CO2);
-        const emissionSamples_NOx = randomNormal(numSimulations, data.em_NOx, emissionVariability * data.em_NOx);
+        const emissionSamples_CO2 = randomNormal(numSimulations, data.emissionFactor_CO2, emissionVariability * data.emissionFactor_CO2);
+        const emissionSamples_NOx = randomNormal(numSimulations, data.emissionFactor_NOx, emissionVariability * data.emissionFactor_NOx);
 
-        //: // Calculate emissions (kg)
+        // Calculate emissions (kg)
         const emissions_CO2 = consumptionSamples.map((consumption, i) => distance * consumption * 1000 * emissionSamples_CO2[i]);
-        const emissions_NOx = consumptionSamples.map((consumption, i)') => distance * consumption * 1000 * emissionSamples_NOx[i]);
+        const emissions_NOx = consumptionSamples.map((consumption, i) => distance * consumption * 1000 * emissionSamples_NOx[i]);
 
         // Calculate mean and confidence intervals
-        mean_CO2[fuel] = mean(emission_CO2);
-        mean_NOx[fuel] = mean(emission_NOx);
-        confIntervals_CO2[fuel] = confidenceInterval(emitss_CO2);
-        confIntervals_NOx[fuel] = confidenceInterval(emit_NOx);
+        mean_CO2[fuel] = mean(emissions_CO2);
+        mean_NOx[fuel] = mean(emissions_NOx);
+        confIntervals_CO2[fuel] = confidenceInterval(emissions_CO2);
+        confIntervals_NOx[fuel] = confidenceInterval(emissions_NOx);
 
         // Calculate emission reductions compared to baseline
         emissionReductions_CO2[fuel] = ((baseline_CO2 - mean_CO2[fuel]) / baseline_CO2) * 100;
@@ -203,7 +203,7 @@ function displayResults(fuels, baselineFuel, mean_CO2, confIntervals_CO2, mean_N
             </ul>
         `;
     });
-    resultContainer.innerHTML = html;
+    resultsContainer.innerHTML = html;
 }
 
 // Helper functions
