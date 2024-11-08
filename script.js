@@ -152,22 +152,39 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             text: title,
             font: {
                 family: 'Arial, sans-serif',
-                size: 18,
+                size: 24,  // Increased font size
                 color: '#333',
             },
         },
         xaxis: {
-            title: 'Fuel Type',
+            title: {
+                text: 'Fuel Type',
+                font: {
+                    size: 18,  // Increased font size
+                    color: '#333',
+                },
+            },
             tickfont: {
-                size: 12,
+                size: 14,   // Increased tick label size
                 color: '#333',
             },
         },
         yaxis: {
-            title: 'Emissions (kg)',
+            title: {
+                text: 'Emissions (kg)',
+                font: {
+                    size: 18,  // Increased font size
+                    color: '#333',
+                },
+            },
             tickfont: {
-                size: 12,
+                size: 14,   // Increased tick label size
                 color: '#333',
+            },
+        },
+        legend: {
+            font: {
+                size: 16,  // Increased legend font size
             },
         },
         plot_bgcolor: '#fff',
