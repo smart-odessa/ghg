@@ -7,26 +7,26 @@ const fuelData = {
         color: '#1f77b4'
     },
     'LNG': {
-        emissionFactor_CO2: 2.75,      // kg CO₂ per kg of fuel
+        emissionFactor_CO2: 2.75,   // kg CO₂ per kg of fuel
         emissionFactor_NOx: 0.015,  // kg NOₓ per kg of fuel
         consumptionRate: 0.15,      // tons per nautical mile
         color: '#ff7f0e'
     },
     'Hydrogen': {
-        emissionFactor_CO2: 0,         // kg CO₂ per kg of fuel
-        emissionFactor_NOx: 0,         // kg NOₓ per kg of fuel
+        emissionFactor_CO2: 0,      // kg CO₂ per kg of fuel
+        emissionFactor_NOx: 0,      // kg NOₓ per kg of fuel
         consumptionRate: 0.20,      // tons per nautical mile
         color: '#2ca02c'
     },
     'Methanol': {
-        emissionFactor_CO2: 1.37,      // kg CO₂ per kg of fuel
-        emissionFactor_NOx: 0.02,      // kg NOₓ per kg of fuel
+        emissionFactor_CO2: 1.37,   // kg CO₂ per kg of fuel
+        emissionFactor_NOx: 0.02,   // kg NOₓ per kg of fuel
         consumptionRate: 0.22,      // tons per nautical mile
         color: '#d62728'
     },
     'Ammonia': {
-        emissionFactor_CO2: 0,         // kg CO₂ per kg of fuel
-        emissionFactor_NOx: 0.01,      // kg NOₓ per kg of fuel
+        emissionFactor_CO2: 0,      // kg CO₂ per kg of fuel
+        emissionFactor_NOx: 0.01,   // kg NOₓ per kg of fuel
         consumptionRate: 0.25,      // tons per nautical mile
         color: '#9467bd'
     }
@@ -131,8 +131,8 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
                 array: [confIntervals[fuel][1] - means[fuel]],
                 arrayminus: [means[fuel] - confIntervals[fuel][0]],
                 color: '#000',
-                thickness: 1.5,
-                width: 3,
+                thickness: 4,   // Increased thickness
+                width: 8,       // Increased width
             },
             type: 'bar',
             name: fuel,
@@ -152,7 +152,7 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             text: title,
             font: {
                 family: 'Arial, sans-serif',
-                size: 24,  // Increased font size
+                size: 32,  // Further increased font size
                 color: '#333',
             },
         },
@@ -160,12 +160,12 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             title: {
                 text: 'Fuel Type',
                 font: {
-                    size: 18,  // Increased font size
+                    size: 28,  // Further increased font size
                     color: '#333',
                 },
             },
             tickfont: {
-                size: 14,   // Increased tick label size
+                size: 22,   // Further increased tick label size
                 color: '#333',
             },
         },
@@ -173,24 +173,27 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             title: {
                 text: 'Emissions (kg)',
                 font: {
-                    size: 18,  // Increased font size
+                    size: 28,  // Further increased font size
                     color: '#333',
                 },
             },
             tickfont: {
-                size: 14,   // Increased tick label size
+                size: 22,   // Further increased tick label size
                 color: '#333',
             },
         },
         legend: {
             font: {
-                size: 16,  // Increased legend font size
+                size: 24,  // Further increased legend font size
             },
         },
         plot_bgcolor: '#fff',
         paper_bgcolor: '#fff',
-        margin: { t: 60, b: 80 },
-        bargap: 0.5,
+        margin: { t: 100, b: 120, l: 120, r: 80 },  // Adjusted margins
+        bargap: 0.1,  // Adjusted bar gap for wider bars
+        bargroupgap: 0.05,
+        height: 800,  // Increased plot height
+        width: 1200,  // Increased plot width
     };
 
     // Detect if the user is on a mobile device
