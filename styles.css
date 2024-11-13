@@ -32,7 +32,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1400px; /* Increased max-width */
     margin: 0 auto;
     padding: 20px;
 }
@@ -41,7 +41,7 @@ h1 {
     background: #ffffff;
     padding: 40px;
     margin: 20px;
-    flex: 1 1 600px;
+    flex: 1 1 700px; /* Increased flex-basis */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
     border-radius: 16px;
     backdrop-filter: blur(8px);
@@ -132,7 +132,8 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
 }
 
 #simulate-button {
-    margin-top: 40px;
+    display: block;
+    margin: 40px auto 0 auto; /* Centered the button */
     padding: 18px 50px;
     background: var(--button-background-color);
     color: var(--button-text-color);
@@ -191,12 +192,13 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 1; /* Ensure it's visible */
 }
 
 .splash-content {
     text-align: center;
     color: #ffffff;
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1s ease-out forwards;
 }
 
 .splash-title {
@@ -233,8 +235,8 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
 /* Hide the splash screen after the animation */
 body.loaded #splash-screen {
     animation: fadeOut 1s ease forwards;
-    visibility: hidden;
     opacity: 0;
+    pointer-events: none; /* Prevent interactions */
 }
 
 body.loaded {
