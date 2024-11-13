@@ -21,7 +21,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1400px; /* Increased max-width to accommodate larger plots */
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -30,14 +30,14 @@ h1 {
     background: rgba(255, 255, 255, 0.9);
     padding: 40px;
     margin: 20px;
-    flex: 1 1 600px; /* Increased minimum width */
+    flex: 1 1 600px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     border-radius: 25px;
     backdrop-filter: blur(12px);
 }
 
 .output-section {
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    overflow-x: auto;
 }
 
 .input-section h2, .output-section h2 {
@@ -130,7 +130,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 #co2-plot, #nox-plot {
     width: 100%;
-    height: 800px; /* Increased height to match the plot's height */
+    height: 800px;
     margin-top: 40px;
 }
 
@@ -294,6 +294,33 @@ footer p {
     }
 
     #co2-plot, #nox-plot {
-        height: 600px; /* Adjust plot height for smaller screens */
+        height: 600px;
     }
+}
+
+/* Styling for Simulation Options */
+.simulation-options {
+    margin: 20px 0;
+}
+
+.simulation-options input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.simulation-options label {
+    margin-right: 30px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #1d1d1f;
+    cursor: pointer;
+}
+
+.simulation-options input[type="radio"]:checked + label {
+    color: #007aff;
+}
+
+.simulation-options input[type="radio"]:hover + label {
+    color: #0051a8;
 }
