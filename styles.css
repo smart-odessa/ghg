@@ -4,36 +4,36 @@
 body {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
-    background: linear-gradient(180deg, #f5f5f7 0%, #e5e5ea 100%);
+    background: #f5f5f7;
     color: #1d1d1f;
     overflow: hidden; /* Prevent scrolling while splash screen is visible */
 }
 
 h1 {
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
     color: #1d1d1f;
     margin-top: 50px;
-    font-size: 40px;
+    font-size: 42px;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .input-section, .output-section {
-    background: rgba(255, 255, 255, 0.9);
+    background: #ffffff;
     padding: 40px;
     margin: 20px;
     flex: 1 1 600px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    border-radius: 25px;
-    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
 }
 
 .output-section {
@@ -49,7 +49,7 @@ h1 {
 
 label {
     display: block;
-    margin: 30px 0 10px;
+    margin: 25px 0 10px;
     font-weight: 500;
     color: #6e6e73;
     font-size: 18px;
@@ -71,14 +71,14 @@ input[type="range"]::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #007aff;
+    background: #0071e3;
     cursor: pointer;
     margin-top: -8px;
     transition: background 0.3s;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-    background: #0051a8;
+    background: #005bb5;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
@@ -99,21 +99,21 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .fuel-checkbox {
     margin-right: 10px;
-    transform: scale(1.3);
+    transform: scale(1.2);
     cursor: pointer;
 }
 
 .fuel-checkbox:checked + label {
-    color: #007aff;
+    color: #0071e3;
 }
 
 #simulate-button {
     margin-top: 40px;
     padding: 18px 50px;
-    background: #007aff;
+    background: #0071e3;
     color: #ffffff;
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
@@ -121,7 +121,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 #simulate-button:hover {
-    background: #0051a8;
+    background: #005bb5;
 }
 
 #simulate-button:active {
@@ -155,15 +155,15 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="checkbox"]:checked + label {
-    color: #007aff;
+    color: #0071e3;
 }
 
 input[type="checkbox"] {
-    accent-color: #007aff;
+    accent-color: #0071e3;
 }
 
 input[type="checkbox"]:hover + label {
-    color: #0051a8;
+    color: #005bb5;
 }
 
 /* Splash Screen Styles */
@@ -173,7 +173,7 @@ input[type="checkbox"]:hover + label {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #007aff;
+    background: #0071e3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,17 +188,17 @@ input[type="checkbox"]:hover + label {
 
 .splash-title {
     font-size: 36px;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 25px;
 }
 
 .loader {
-    border: 8px solid rgba(255, 255, 255, 0.2);
-    border-top: 8px solid #ffffff;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    border-top: 6px solid #ffffff;
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    animation: spin 2s linear infinite;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
 }
 
 /* Animations */
@@ -231,11 +231,11 @@ body.loaded {
 .author-section {
     text-align: center;
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.95);
+    background: #f5f5f7;
     margin: 50px 0 0 0;
     position: relative;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .author-section p {
@@ -248,18 +248,18 @@ body.loaded {
 .author-section h2 {
     margin: 15px 0 0 0;
     font-size: 26px;
-    color: #007aff;
-    font-weight: 700;
+    color: #0071e3;
+    font-weight: 600;
 }
 
 footer {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #ffffff;
     padding: 25px;
     text-align: center;
     margin-top: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 0 0 20px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 0 0 15px 15px;
 }
 
 footer p {
@@ -300,27 +300,34 @@ footer p {
 
 /* Styling for Simulation Options */
 .simulation-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 20px 0;
 }
 
 .simulation-options input[type="radio"] {
-    margin-right: 10px;
-    transform: scale(1.3);
+    margin-right: 5px;
+    transform: scale(1.2);
     cursor: pointer;
 }
 
 .simulation-options label {
-    margin-right: 30px;
+    margin-right: 20px;
     font-weight: 500;
     font-size: 18px;
     color: #1d1d1f;
     cursor: pointer;
 }
 
+.simulation-options label:last-child {
+    margin-right: 0;
+}
+
 .simulation-options input[type="radio"]:checked + label {
-    color: #007aff;
+    color: #0071e3;
 }
 
 .simulation-options input[type="radio"]:hover + label {
-    color: #0051a8;
+    color: #005bb5;
 }
