@@ -184,8 +184,10 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
         },
         legend: {
             font: {
-                size: 24,
+                size: 20,  // Reduced font size for the legend
             },
+            x: 0.8,  // Shifted legend to the left
+            y: 1,
         },
         plot_bgcolor: '#fff',
         paper_bgcolor: '#fff',
