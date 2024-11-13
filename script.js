@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Splash Screen Timeout
     setTimeout(() => {
         document.body.classList.add('loaded');
-    }, 2000); // The splash screen will be visible for 2 seconds
+    }, 2500); // The splash screen will be visible for 2.5 seconds
 });
 
 // Function to detect mobile devices
@@ -131,8 +131,8 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
     const margin = isMobile ? { t: 60, b: 80, l: 60, r: 40 } : { t: 100, b: 120, l: 120, r: 80 };
     const plotHeight = isMobile ? 400 : 800;
     const plotWidth = isMobile ? null : 1200;
-    const bargap = isMobile ? 0.4 : 0.1;
-    const bargroupgap = isMobile ? 0.3 : 0.05;
+    const bargap = isMobile ? 0.6 : 0.3;
+    const bargroupgap = isMobile ? 0.5 : 0.2;
 
     const data = fuels.map((fuel) => {
         return {
