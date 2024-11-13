@@ -130,7 +130,7 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
     const legendFontSize = isMobile ? 14 : 20;
     const margin = isMobile ? { t: 60, b: 80, l: 60, r: 40 } : { t: 100, b: 120, l: 120, r: 80 };
     const plotHeight = isMobile ? 400 : 800;
-    const plotWidth = isMobile ? null : 1200;
+    const plotWidth = null; // Let Plotly handle the width
     const bargap = isMobile ? 0.6 : 0.3;
     const bargroupgap = isMobile ? 0.5 : 0.2;
 
