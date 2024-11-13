@@ -4,31 +4,31 @@ const fuelData = {
         emissionFactor_CO2: 3.17,   // kg CO₂ per kg of fuel
         emissionFactor_NOx: 0.02,   // kg NOₓ per kg of fuel
         consumptionRate: 0.18,      // tons per nautical mile
-        color: '#1f77b4'
+        color: '#007aff'            // Vivid blue
     },
     'LNG': {
         emissionFactor_CO2: 2.75,   // kg CO₂ per kg of fuel
         emissionFactor_NOx: 0.015,  // kg NOₓ per kg of fuel
         consumptionRate: 0.15,      // tons per nautical mile
-        color: '#ff7f0e'
+        color: '#ff6f61'            // Vivid coral
     },
     'Hydrogen': {
         emissionFactor_CO2: 0,      // kg CO₂ per kg of fuel
         emissionFactor_NOx: 0,      // kg NOₓ per kg of fuel
         consumptionRate: 0.20,      // tons per nautical mile
-        color: '#2ca02c'
+        color: '#2ca02c'            // Vivid green
     },
     'Methanol': {
         emissionFactor_CO2: 1.37,   // kg CO₂ per kg of fuel
         emissionFactor_NOx: 0.02,   // kg NOₓ per kg of fuel
         consumptionRate: 0.22,      // tons per nautical mile
-        color: '#d62728'
+        color: '#d62728'            // Vivid red
     },
     'Ammonia': {
         emissionFactor_CO2: 0,      // kg CO₂ per kg of fuel
         emissionFactor_NOx: 0.01,   // kg NOₓ per kg of fuel
         consumptionRate: 0.25,      // tons per nautical mile
-        color: '#9467bd'
+        color: '#9467bd'            // Vivid purple
     }
 };
 
@@ -60,7 +60,7 @@ function isMobileDevice() {
 function runSimulation() {
     // Get user inputs
     const distance = parseFloat(document.getElementById('distance').value);
-    const numSimulations = parseInt(document.querySelector('input[name="numSimulations"]:checked').value);
+    const numSimulations = 10000;
     const consumptionVariability = parseFloat(document.getElementById('consumptionVariability').value) / 100;
     const emissionVariability = parseFloat(document.getElementById('emissionVariability').value) / 100;
 
@@ -121,6 +121,19 @@ function runSimulation() {
 }
 
 function plot(containerId, title, fuels, means, confIntervals, colors) {
+    const isMobile = isMobileDevice();
+
+    // Set font sizes and plot dimensions based on device
+    const titleFontSize = isMobile ? 20 : 32;
+    const axisTitleFontSize = isMobile ? 16 : 28;
+    const tickFontSize = isMobile ? 12 : 22;
+    const legendFontSize = isMobile ? 14 : 20;
+    const margin = isMobile ? { t: 60, b: 80, l: 60, r: 40 } : { t: 100, b: 120, l: 120, r: 80 };
+    const plotHeight = isMobile ? 400 : 800;
+    const plotWidth = isMobile ? null : 1200;
+    const bargap = isMobile ? 0.4 : 0.1;
+    const bargroupgap = isMobile ? 0.3 : 0.05;
+
     const data = fuels.map((fuel) => {
         return {
             x: [fuel],
@@ -131,8 +144,8 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
                 array: [confIntervals[fuel][1] - means[fuel]],
                 arrayminus: [means[fuel] - confIntervals[fuel][0]],
                 color: '#000',
-                thickness: 4,   // Increased thickness
-                width: 8,       // Increased width
+                thickness: isMobile ? 2 : 4,
+                width: isMobile ? 4 : 8,
             },
             type: 'bar',
             name: fuel,
@@ -152,7 +165,7 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             text: title,
             font: {
                 family: 'Arial, sans-serif',
-                size: 32,  // Increased font size
+                size: titleFontSize,
                 color: '#333',
             },
         },
@@ -160,12 +173,12 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             title: {
                 text: 'Fuel Type',
                 font: {
-                    size: 28,
+                    size: axisTitleFontSize,
                     color: '#333',
                 },
             },
             tickfont: {
-                size: 22,
+                size: tickFontSize,
                 color: '#333',
             },
         },
@@ -173,33 +186,30 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             title: {
                 text: 'Emissions (kg)',
                 font: {
-                    size: 28,
+                    size: axisTitleFontSize,
                     color: '#333',
                 },
             },
             tickfont: {
-                size: 22,
+                size: tickFontSize,
                 color: '#333',
             },
         },
         legend: {
             font: {
-                size: 20,  // Reduced font size for the legend
+                size: legendFontSize,
             },
-            x: 0.8,  // Shifted legend to the left
+            x: 0.8,
             y: 1,
         },
         plot_bgcolor: '#fff',
         paper_bgcolor: '#fff',
-        margin: { t: 100, b: 120, l: 120, r: 80 },
-        bargap: 0.1,
-        bargroupgap: 0.05,
-        height: 800,
-        width: 1200,
+        margin: margin,
+        bargap: bargap,
+        bargroupgap: bargroupgap,
+        height: plotHeight,
+        width: plotWidth,
     };
-
-    // Detect if the user is on a mobile device
-    const isMobile = isMobileDevice();
 
     // Adjust Plotly config options based on device
     const config = {
