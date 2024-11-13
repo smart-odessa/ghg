@@ -35,7 +35,7 @@ const fuelData = {
 // Initialize Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     // Update displayed values when sliders change
-    ['distance', 'numSimulations', 'consumptionVariability', 'emissionVariability'].forEach(id => {
+    ['distance', 'consumptionVariability', 'emissionVariability'].forEach(id => {
         const slider = document.getElementById(id);
         const display = document.getElementById(`${id}-value`);
         slider.addEventListener('input', () => {
@@ -60,7 +60,7 @@ function isMobileDevice() {
 function runSimulation() {
     // Get user inputs
     const distance = parseFloat(document.getElementById('distance').value);
-    const numSimulations = parseInt(document.getElementById('numSimulations').value);
+    const numSimulations = parseInt(document.querySelector('input[name="numSimulations"]:checked').value);
     const consumptionVariability = parseFloat(document.getElementById('consumptionVariability').value) / 100;
     const emissionVariability = parseFloat(document.getElementById('emissionVariability').value) / 100;
 
@@ -152,7 +152,7 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             text: title,
             font: {
                 family: 'Arial, sans-serif',
-                size: 32,  // Further increased font size
+                size: 32,  // Increased font size
                 color: '#333',
             },
         },
@@ -160,12 +160,12 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             title: {
                 text: 'Fuel Type',
                 font: {
-                    size: 28,  // Further increased font size
+                    size: 28,
                     color: '#333',
                 },
             },
             tickfont: {
-                size: 22,   // Further increased tick label size
+                size: 22,
                 color: '#333',
             },
         },
@@ -173,27 +173,27 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
             title: {
                 text: 'Emissions (kg)',
                 font: {
-                    size: 28,  // Further increased font size
+                    size: 28,
                     color: '#333',
                 },
             },
             tickfont: {
-                size: 22,   // Further increased tick label size
+                size: 22,
                 color: '#333',
             },
         },
         legend: {
             font: {
-                size: 24,  // Further increased legend font size
+                size: 24,
             },
         },
         plot_bgcolor: '#fff',
         paper_bgcolor: '#fff',
-        margin: { t: 100, b: 120, l: 120, r: 80 },  // Adjusted margins
-        bargap: 0.1,  // Adjusted bar gap for wider bars
+        margin: { t: 100, b: 120, l: 120, r: 80 },
+        bargap: 0.1,
         bargroupgap: 0.05,
-        height: 800,  // Increased plot height
-        width: 1200,  // Increased plot width
+        height: 800,
+        width: 1200,
     };
 
     // Detect if the user is on a mobile device
