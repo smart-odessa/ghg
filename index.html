@@ -36,8 +36,18 @@
         <label for="distance">Voyage Distance (nautical miles): <span id="distance-value">1000</span></label>
         <input type="range" id="distance" min="100" max="10000" step="100" value="1000">
 
-        <label for="numSimulations">Number of Simulations: <span id="numSimulations-value">10000</span></label>
-        <input type="range" id="numSimulations" min="1000" max="50000" step="1000" value="10000">
+        <!-- Number of Simulations Selection -->
+        <h2>Number of Simulations:</h2>
+        <div class="simulation-options">
+            <input type="radio" id="sim5000" name="numSimulations" value="5000" checked>
+            <label for="sim5000">5000</label>
+
+            <input type="radio" id="sim10000" name="numSimulations" value="10000">
+            <label for="sim10000">10000</label>
+
+            <input type="radio" id="sim15000" name="numSimulations" value="15000">
+            <label for="sim15000">15000</label>
+        </div>
 
         <label for="consumptionVariability">Fuel Consumption Variability (%): <span id="consumptionVariability-value">5</span>%</label>
         <input type="range" id="consumptionVariability" min="0" max="20" step="1" value="5">
