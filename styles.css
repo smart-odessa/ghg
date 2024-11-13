@@ -1,18 +1,29 @@
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap');
 
+/* Color Palette */
+:root {
+    --primary-color: #007aff; /* Vivid blue */
+    --secondary-color: #ff6f61; /* Vivid coral */
+    --background-color: #f0f4f8; /* Light background */
+    --text-color: #1d1d1f; /* Dark text */
+    --heading-color: #007aff; /* Primary color */
+    --button-background-color: #ff6f61; /* Secondary color */
+    --button-text-color: #ffffff;
+}
+
 body {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
-    background: #f5f5f7;
-    color: #1d1d1f;
+    background: var(--background-color);
+    color: var(--text-color);
     overflow: hidden; /* Prevent scrolling while splash screen is visible */
 }
 
 h1 {
     text-align: center;
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--heading-color);
     margin-top: 50px;
     font-size: 42px;
 }
@@ -42,7 +53,7 @@ h1 {
 
 .input-section h2, .output-section h2 {
     margin-top: 0;
-    color: #1d1d1f;
+    color: var(--heading-color);
     font-weight: 600;
     font-size: 26px;
 }
@@ -71,7 +82,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #007aff;
+    background: var(--primary-color);
     cursor: pointer;
     margin-top: -8px;
     transition: background 0.3s;
@@ -92,7 +103,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     margin: 15px 20px 15px 0;
     font-weight: 500;
     cursor: pointer;
-    color: #1d1d1f;
+    color: var(--text-color);
     font-size: 18px;
     transition: color 0.3s;
 }
@@ -104,14 +115,14 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="checkbox"], input[type="radio"] {
-    accent-color: #007aff;
+    accent-color: var(--primary-color);
     cursor: pointer;
     transform: scale(1.2);
     margin-right: 5px;
 }
 
 input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
-    color: #007aff;
+    color: var(--primary-color);
 }
 
 input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
@@ -121,8 +132,8 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
 #simulate-button {
     margin-top: 40px;
     padding: 18px 50px;
-    background: #007aff;
-    color: #ffffff;
+    background: var(--button-background-color);
+    color: var(--button-text-color);
     border: none;
     border-radius: 12px;
     font-size: 20px;
@@ -132,7 +143,7 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
 }
 
 #simulate-button:hover {
-    background: #005bb5;
+    background: #e65b50;
 }
 
 #simulate-button:active {
@@ -148,12 +159,12 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
 #results {
     margin-top: 40px;
     font-size: 20px;
-    color: #1d1d1f;
+    color: var(--text-color);
 }
 
 #results h2 {
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--heading-color);
 }
 
 #results ul {
@@ -172,7 +183,7 @@ input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #007aff;
+    background: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,7 +241,7 @@ body.loaded {
 .author-section {
     text-align: center;
     padding: 50px 20px;
-    background: #f2f2f5;
+    background: rgba(0, 122, 255, 0.05); /* Primary color with low opacity */
     margin: 50px 0 0 0;
     position: relative;
     z-index: 1;
@@ -240,14 +251,14 @@ body.loaded {
 .author-section p {
     margin: 0;
     font-size: 22px;
-    color: #1d1d1f;
+    color: var(--text-color);
     font-weight: 500;
 }
 
 .author-section h2 {
     margin: 15px 0 0 0;
     font-size: 26px;
-    color: #007aff;
+    color: var(--primary-color);
     font-weight: 600;
 }
 
@@ -293,26 +304,6 @@ footer p {
     }
 
     #co2-plot, #nox-plot {
-        height: 600px;
+        height: 400px;
     }
-}
-
-/* Styling for Simulation Options */
-.simulation-options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.simulation-options label {
-    margin-right: 20px;
-    font-weight: 500;
-    font-size: 18px;
-    color: #1d1d1f;
-    cursor: pointer;
-}
-
-.simulation-options label:last-child {
-    margin-right: 0;
 }
