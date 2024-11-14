@@ -209,14 +209,16 @@ function plot(containerId, title, fuels, means, confIntervals, colors) {
         bargroupgap: bargroupgap,
         height: plotHeight,
         width: plotWidth,
+        dragmode: isMobile ? false : 'zoom', // Disable drag interactions on mobile
     };
 
     // Adjust Plotly config options based on device
     const config = {
         responsive: true,
-        scrollZoom: !isMobile,        // Disable scroll zoom on mobile devices
-        displayModeBar: !isMobile,    // Hide mode bar on mobile devices
-        doubleClick: false,           // Disable double-tap zoom on mobile
+        scrollZoom: false,         // Disable scroll zoom on mobile devices
+        displayModeBar: true,      // Show mode bar
+        doubleClick: false,        // Disable double-tap zoom on mobile
+        displaylogo: false,        // Remove Plotly logo
     };
 
     Plotly.newPlot(containerId, data, layout, config);
